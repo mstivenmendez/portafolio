@@ -147,6 +147,7 @@
             }
         }
 
+        /* Avatar actualizado con tu imagen */
         .avatar {
             width: 180px;
             height: 180px;
@@ -156,11 +157,17 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 70px;
-            font-weight: 900;
-            font-family: 'Poppins', sans-serif;
             box-shadow: 0 0 50px rgba(0, 255, 255, 0.5);
             animation: float 3s ease-in-out infinite;
+            overflow: hidden; /* Para que la imagen sea circular */
+            padding: 4px; /* Efecto de borde neón */
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
         }
 
         @keyframes float {
@@ -168,32 +175,27 @@
             50% { transform: translateY(-20px); }
         }
 
+        /* Estilos para el texto animado (sin cursor) */
+        .typing-container {
+            min-height: 120px;
+            margin-bottom: 20px;
+        }
+
         .hero h1 {
             font-family: 'Poppins', sans-serif;
             font-size: 56px;
             font-weight: 900;
-            margin-bottom: 20px;
             text-transform: uppercase;
             letter-spacing: 2px;
-        }
-
-        .typing-text {
-            color: var(--color-cyan);
-            display: inline-block;
-            border-right: 3px solid var(--color-cyan);
-            animation: blink 0.7s infinite;
-        }
-
-        @keyframes blink {
-            0%, 100% { border-color: var(--color-cyan); }
-            50% { border-color: transparent; }
+            margin-bottom: 10px;
         }
 
         .hero h2 {
             font-size: 24px;
-            color: var(--text-secondary);
+            color: var(--color-cyan);
             margin-bottom: 20px;
             font-weight: 300;
+            min-height: 36px;
         }
 
         .hero p {
@@ -374,6 +376,7 @@
             color: var(--text-secondary);
             margin-bottom: 20px;
             line-height: 1.6;
+            text-align: center;
         }
 
         .project-tech {
@@ -390,28 +393,6 @@
             border-radius: 20px;
             font-size: 12px;
             color: var(--color-cyan);
-        }
-
-        .project-links {
-            display: flex;
-            gap: 15px;
-        }
-
-        .project-btn {
-            flex: 1;
-            padding: 10px;
-            text-align: center;
-            border: 2px solid var(--color-cyan);
-            border-radius: 5px;
-            text-decoration: none;
-            color: var(--text-primary);
-            transition: all 0.3s;
-            font-weight: 600;
-        }
-
-        .project-btn:hover {
-            background: var(--color-cyan);
-            color: var(--bg-primary);
         }
 
         /* Timeline */
@@ -484,74 +465,6 @@
             margin-bottom: 10px;
         }
 
-        /* Contact Section */
-        .contact-container {
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .contact-form {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 40px;
-            border-radius: 15px;
-            border: 1px solid rgba(0, 255, 255, 0.2);
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: 600;
-            color: var(--color-cyan);
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(0, 255, 255, 0.3);
-            border-radius: 5px;
-            color: var(--text-primary);
-            font-family: 'Roboto', sans-serif;
-            font-size: 16px;
-            transition: all 0.3s;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--color-cyan);
-            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 150px;
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 15px;
-            background: linear-gradient(45deg, var(--color-cyan), var(--color-violet));
-            border: none;
-            border-radius: 5px;
-            color: var(--text-primary);
-            font-weight: 600;
-            font-size: 18px;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 30px rgba(0, 255, 255, 0.6);
-        }
-
         .social-links {
             display: flex;
             justify-content: center;
@@ -580,7 +493,6 @@
             transform: translateY(-5px) rotate(360deg);
         }
 
-        /* Footer */
         footer {
             text-align: center;
             padding: 40px;
@@ -591,64 +503,19 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            nav {
-                padding: 15px 5%;
-            }
-
-            .nav-links {
-                gap: 15px;
-                font-size: 14px;
-            }
-
-            .hero h1 {
-                font-size: 32px;
-            }
-
-            .hero h2 {
-                font-size: 18px;
-            }
-
-            .section-title {
-                font-size: 32px;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .timeline::before {
-                left: 20px;
-            }
-
-            .timeline-item,
-            .timeline-item:nth-child(even) {
-                flex-direction: column !important;
-            }
-
-            .timeline-content {
-                width: calc(100% - 60px);
-                margin-left: 60px;
-            }
-
-            .timeline-dot {
-                left: 20px;
-            }
-
-            section {
-                padding: 60px 5%;
-            }
-
-            .contact-form {
-                padding: 30px 20px;
-            }
+            nav { padding: 15px 5%; }
+            .nav-links { display: none; }
+            .hero h1 { font-size: 32px; }
+            .hero h2 { font-size: 18px; }
+            .section-title { font-size: 32px; }
+            .about-content { grid-template-columns: 1fr; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .timeline::before { left: 20px; }
+            .timeline-item, .timeline-item:nth-child(even) { flex-direction: column !important; }
+            .timeline-content { width: calc(100% - 60px); margin-left: 60px; }
+            .timeline-dot { left: 20px; }
+            section { padding: 60px 5%; }
         }
     </style>
 </head>
@@ -666,9 +533,13 @@
 
     <section id="inicio" class="hero">
         <div class="hero-content">
-            <div class="avatar">MM</div>
-            <h1>HOLA, SOY <span class="typing-text">MAICOLL MÉNDEZ</span></h1>
-            <h2>Desarrollador Junior Full Stack</h2>
+            <div class="avatar">
+                <img src="./imagenes/WhatsApp Image 2026-01-27 at 5.37.13 PM.jpeg" alt="Maicoll Méndez">
+            </div>
+            <div class="typing-container">
+                <h1 id="dyn-name"></h1>
+                <h2 id="dyn-role"></h2>
+            </div>
             <p> Técnico en mantenimiento de computadores y técnico laboral en desarrollo de software</p>
             <a href="#proyectos" class="cta-button">Ver mis proyectos</a>
         </div>
@@ -684,58 +555,28 @@
             </div>
             <div class="skills-grid">
                 <div class="skill-item">
-                    <div class="skill-name">
-                        <span>HTML</span>
-                        <span>100%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 100%"></div>
-                    </div>
+                    <div class="skill-name"><span>HTML</span><span>100%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 100%"></div></div>
                 </div>
                 <div class="skill-item">
-                    <div class="skill-name">
-                        <span>CSS</span>
-                        <span>70%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 70%"></div>
-                    </div>
+                    <div class="skill-name"><span>CSS</span><span>70%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 70%"></div></div>
                 </div>
                 <div class="skill-item">
-                    <div class="skill-name">
-                        <span>JavaScript</span>
-                        <span>50%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 50%"></div>
-                    </div>
+                    <div class="skill-name"><span>JavaScript</span><span>50%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 50%"></div></div>
                 </div>
                 <div class="skill-item">
-                    <div class="skill-name">
-                        <span>Git/GitHub</span>
-                        <span>80%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 80%"></div>
-                    </div>
+                    <div class="skill-name"><span>Git/GitHub</span><span>80%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 80%"></div></div>
                 </div>
                 <div class="skill-item">
-                    <div class="skill-name">
-                        <span>Python</span>
-                        <span>50%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 50%"></div>
-                    </div>
+                    <div class="skill-name"><span>Python</span><span>50%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 50%"></div></div>
                 </div>
                 <div class="skill-item">
-                    <div class="skill-name">
-                        <span>Mysql</span>
-                        <span>60%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 60%"></div>
-                    </div>
+                    <div class="skill-name"><span>Mysql</span><span>60%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 60%"></div></div>
                 </div>
             </div>
         </div>
@@ -745,41 +586,29 @@
         <h2 class="section-title">Mis <span>Proyectos</span></h2>
         <div class="projects-grid">
             <div class="project-card">
-                <div class="project-image">
-                    <i class="fas fa-laptop-code"></i>
-                </div>
+                <div class="project-image"><i class="fas fa-laptop-code"></i></div>
                 <div class="project-info">
                     <h3 class="project-title">E-Commerce </h3>
                     <p class="project-description">Desarrollo de un e-commerce para una tienda de ropa y calzado, implementado con HTML, CSS y JavaScript. El proyecto incluye una interfaz moderna e intuitiva que permite visualizar productos, gestionar el carrito de compras y simular procesos de pago. Además, se integró una API para la obtención dinámica de datos, mejorando la experiencia del usuario y la eficiencia del sistema. Este proyecto fortaleció mis habilidades en desarrollo web frontend, consumo de APIs y diseño de interfaces funcionales y atractivas.</p>
                     <div class="project-tech">
-                        <span class="tech-tag">HTML</span>
-                        <span class="tech-tag">CSS</span>
-                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">HTML</span><span class="tech-tag">CSS</span><span class="tech-tag">JavaScript</span>
                     </div>
                 </div>
             </div>
             <div class="project-card">
-                <div class="project-image">
-                    <i class="fas fa-mobile-alt"></i>
-                </div>
+                <div class="project-image"><i class="fas fa-mobile-alt"></i></div>
                 <div class="project-info">
                     <h3 class="project-title"> Simulacion de una loteria </h3>
                     <p class="project-description"> Desarrollo de una simulación de lotería en Python utilizando estructuras de datos como listas y diccionarios para gestionar los boletos, números ganadores y resultados. El proyecto permite generar números aleatorios, validar coincidencias y mostrar estadísticas de ganadores, aplicando lógica de programación y control de flujo. Este ejercicio fortaleció mis habilidades en el manejo de datos, uso de estructuras dinámicas y desarrollo de programas interactivos en Python.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                    </div>
+                    <div class="project-tech"><span class="tech-tag">Python</span></div>
                 </div>
             </div>
             <div class="project-card">
-                <div class="project-image">
-                    <i class="fa fa-database"></i>
-                </div>
+                <div class="project-image"><i class="fa fa-database"></i></div>
                 <div class="project-info">
                     <h3 class="project-title">Base de datos</h3>
                     <p class="project-description"> enfocada en la gestión eficiente de productos, clientes, ventas y proveedores. El proyecto incluye la creación de tablas relacionales, implementación de llaves foráneas y consultas SQL optimizadas utilizando MySQL. Este trabajo permitió mejorar la organización de la información y facilitar el acceso a los datos para generar reportes y análisis de ventas.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Mysql</span>
-                    </div>
+                    <div class="project-tech"><span class="tech-tag">Mysql</span></div>
                 </div>
             </div>
         </div>
@@ -789,24 +618,24 @@
         <h2 class="section-title">Mi <span>Trayectoria</span></h2>
         <div class="timeline">
             <div class="timeline-item">
+                <div class="timeline-dot"></div>
                 <div class="timeline-content">
-                    <div class="timeline-dot"></div>
                     <h3 class="timeline-title">Campuslands</h3>
                     <p class="timeline-date">2024 - Presente</p>
                     <p>Formación intensiva en desarrollo web full-stack, aprendiendo las tecnologías más demandadas del mercado y trabajando en proyectos reales.</p>
                 </div>
             </div>
             <div class="timeline-item">
+                <div class="timeline-dot"></div>
                 <div class="timeline-content">
-                    <div class="timeline-dot"></div>
                     <h3 class="timeline-title">Tecnico en mantenimeinto de computadores</h3>
                     <p class="timeline-date"> 2025</p>
                     <p>Mantenimiento y optimización de equipos de cómputo para usuarios y pequeñas empresas, garantizando su correcto funcionamiento y rendimiento. Enfocado en mejorar continuamente mis habilidades técnicas y en ofrecer un servicio de atención al cliente eficiente y confiable.</p>
                 </div>
             </div>
             <div class="timeline-item">
+                <div class="timeline-dot"></div>
                 <div class="timeline-content">
-                    <div class="timeline-dot"></div>
                     <h3 class="timeline-title"> Proyectos personales </h3>
                     <p class="timeline-date"> 2025 </p>
                     <p>Desarrollo de proyectos personales enfocados en la creación de sitios web interactivos y aplicaciones funcionales utilizando tecnologías como HTML, CSS y JavaScript en el frontend, y Python junto con MySQL en el backend. Además, gestiono el control de versiones y la colaboración de mis proyectos a través de Git y GitHub, fortaleciendo mis habilidades técnicas, de organización y trabajo en equipo.</p>
@@ -826,8 +655,55 @@
     </section>
 
     <footer>
-        <p>&copy; 2025 Maicoll Méndez | Desarrollador Junior </p>
+        <p>&copy; 2026 Maicoll Méndez | Desarrollador Junior </p>
     </footer>
-    </body>
-</html>
 
+    <script>
+        const nameEl = document.getElementById('dyn-name');
+        const roleEl = document.getElementById('dyn-role');
+        const nameStr = "HOLA, SOY MAICOLL MÉNDEZ";
+        const roleStr = "Desarrollador Junior Full Stack";
+
+        let charIndex = 0;
+        let isDeleting = false;
+        let step = 0; // 0: escribiendo nombre, 1: escribiendo cargo
+
+        function typeLoop() {
+            if (step === 0) {
+                if (!isDeleting && charIndex <= nameStr.length) {
+                    nameEl.textContent = nameStr.substring(0, charIndex);
+                    charIndex++;
+                    setTimeout(typeLoop, 100);
+                } else if (isDeleting && charIndex >= 0) {
+                    nameEl.textContent = nameStr.substring(0, charIndex);
+                    charIndex--;
+                    setTimeout(typeLoop, 50);
+                } else if (!isDeleting) {
+                    step = 1; charIndex = 0;
+                    setTimeout(typeLoop, 500);
+                } else {
+                    isDeleting = false; charIndex = 0;
+                    setTimeout(typeLoop, 500);
+                }
+            } else {
+                if (!isDeleting && charIndex <= roleStr.length) {
+                    roleEl.textContent = roleStr.substring(0, charIndex);
+                    charIndex++;
+                    setTimeout(typeLoop, 100);
+                } else if (isDeleting && charIndex >= 0) {
+                    roleEl.textContent = roleStr.substring(0, charIndex);
+                    charIndex--;
+                    setTimeout(typeLoop, 50);
+                } else if (!isDeleting) {
+                    setTimeout(() => { isDeleting = true; typeLoop(); }, 2000);
+                } else {
+                    roleEl.textContent = "";
+                    step = 0; isDeleting = true; charIndex = nameStr.length;
+                    typeLoop();
+                }
+            }
+        }
+        window.onload = typeLoop;
+    </script>
+</body>
+</html>
