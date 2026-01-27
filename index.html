@@ -35,7 +35,7 @@
             scroll-behavior: smooth;
         }
 
-        /* Navigation */
+        /* --- NAVEGACIÓN Y MENÚ HAMBURGUESA --- */
         nav {
             position: fixed;
             top: 0;
@@ -80,26 +80,28 @@
             position: relative;
         }
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--color-cyan);
-            transition: width 0.3s;
-        }
-
         .nav-links a:hover {
             color: var(--color-cyan);
         }
 
-        .nav-links a:hover::after {
-            width: 100%;
+        /* Icono Hamburguesa */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 6px;
+            z-index: 1100;
         }
 
-        /* Hero Section */
+        .hamburger span {
+            width: 30px;
+            height: 3px;
+            background: var(--color-cyan);
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        /* --- HERO SECTION --- */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -107,27 +109,20 @@
             justify-content: center;
             position: relative;
             overflow: hidden;
-            padding: 100px 5% 50px;
+            padding: 120px 5% 50px;
             background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
         }
 
         .hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background:
-                radial-gradient(circle at 20% 50%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(138, 43, 226, 0.1) 0%, transparent 50%);
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(138, 43, 226, 0.1) 0%, transparent 50%);
             animation: pulse 8s ease-in-out infinite;
         }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
-        }
+        @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
 
         .hero-content {
             text-align: center;
@@ -136,18 +131,8 @@
             animation: fadeInUp 1s ease-out;
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Avatar actualizado con tu imagen */
         .avatar {
             width: 180px;
             height: 180px;
@@ -159,8 +144,8 @@
             justify-content: center;
             box-shadow: 0 0 50px rgba(0, 255, 255, 0.5);
             animation: float 3s ease-in-out infinite;
-            overflow: hidden; /* Para que la imagen sea circular */
-            padding: 4px; /* Efecto de borde neón */
+            overflow: hidden;
+            padding: 4px;
         }
 
         .avatar img {
@@ -170,12 +155,8 @@
             border-radius: 50%;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
 
-        /* Estilos para el texto animado (sin cursor) */
         .typing-container {
             min-height: 120px;
             margin-bottom: 20px;
@@ -183,7 +164,7 @@
 
         .hero h1 {
             font-family: 'Poppins', sans-serif;
-            font-size: 56px;
+            font-size: clamp(32px, 8vw, 56px);
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -191,7 +172,7 @@
         }
 
         .hero h2 {
-            font-size: 24px;
+            font-size: clamp(18px, 4vw, 24px);
             color: var(--color-cyan);
             margin-bottom: 20px;
             font-weight: 300;
@@ -199,7 +180,7 @@
         }
 
         .hero p {
-            font-size: 18px;
+            font-size: clamp(14px, 2vw, 18px);
             color: var(--text-secondary);
             margin-bottom: 40px;
         }
@@ -219,310 +200,72 @@
             overflow: hidden;
         }
 
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.5s;
-        }
+        .cta-button:hover { transform: translateY(-5px); box-shadow: 0 10px 40px rgba(0, 255, 255, 0.6); }
 
-        .cta-button:hover::before {
-            left: 100%;
-        }
+        /* --- SECCIONES --- */
+        section { padding: 80px 5%; max-width: 1400px; margin: 0 auto; }
+        .section-title { font-family: 'Poppins', sans-serif; font-size: clamp(28px, 5vw, 48px); font-weight: 700; text-align: center; margin-bottom: 60px; text-transform: uppercase; letter-spacing: 3px; }
+        .section-title span { background: linear-gradient(45deg, var(--color-cyan), var(--color-violet)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
 
-        .cta-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(0, 255, 255, 0.6);
-        }
+        .about-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 60px; align-items: center; }
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 25px; }
+        .skill-item { background: rgba(255, 255, 255, 0.03); padding: 20px; border-radius: 10px; border: 1px solid rgba(0, 255, 255, 0.2); transition: 0.3s; }
+        .skill-name { display: flex; justify-content: space-between; margin-bottom: 10px; font-weight: 600; }
+        .skill-bar { height: 8px; background: rgba(255, 255, 255, 0.1); border-radius: 10px; overflow: hidden; }
+        .skill-progress { height: 100%; background: linear-gradient(90deg, var(--color-cyan), var(--color-violet)); border-radius: 10px; transform-origin: left; }
 
-        /* Sections */
-        section {
-            padding: 100px 5%;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+        .project-card { background: rgba(255, 255, 255, 0.03); border-radius: 15px; overflow: hidden; border: 1px solid rgba(0, 255, 255, 0.2); transition: 0.3s; }
+        .project-image { height: 200px; background: linear-gradient(135deg, var(--color-cyan), var(--color-violet)); display: flex; align-items: center; justify-content: center; font-size: 60px; }
+        .project-info { padding: 25px; display: flex; flex-direction: column; align-items: center; }
 
-        .section-title {
-            font-family: 'Poppins', sans-serif;
-            font-size: 48px;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 60px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-        }
+        .timeline { position: relative; max-width: 900px; margin: 0 auto; padding: 20px 0; }
+        .timeline::before { content: ''; position: absolute; left: 50%; transform: translateX(-50%); width: 2px; height: 100%; background: linear-gradient(180deg, var(--color-cyan), var(--color-violet)); }
+        .timeline-item { display: flex; justify-content: space-between; margin-bottom: 50px; position: relative; width: 100%; }
+        .timeline-item:nth-child(even) { flex-direction: row-reverse; }
+        .timeline-content { width: 45%; background: rgba(255, 255, 255, 0.03); padding: 25px; border-radius: 10px; border: 1px solid rgba(0, 255, 255, 0.2); transition: 0.3s; }
+        .timeline-dot { position: absolute; left: 50%; transform: translateX(-50%); width: 20px; height: 20px; background: var(--color-cyan); border-radius: 50%; border: 4px solid var(--bg-primary); z-index: 1; }
 
-        .section-title span {
-            background: linear-gradient(45deg, var(--color-cyan), var(--color-violet));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+        .social-links { display: flex; justify-content: center; gap: 30px; margin-top: 40px; flex-wrap: wrap; }
+        .social-link { width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border: 2px solid var(--color-cyan); border-radius: 50%; color: var(--color-cyan); font-size: 24px; transition: 0.4s; }
+        .social-link:hover { background: var(--color-cyan); color: var(--bg-primary); transform: translateY(-5px) rotate(360deg); }
 
-        /* About Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
+        footer { text-align: center; padding: 40px; background: rgba(0, 0, 0, 0.5); border-top: 1px solid rgba(0, 255, 255, 0.2); color: var(--text-secondary); }
 
-        .about-text p {
-            font-size: 18px;
-            line-height: 1.8;
-            color: var(--text-secondary);
-            margin-bottom: 20px;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
-        }
-
-        .skill-item {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 20px;
-            border-radius: 10px;
-            border: 1px solid rgba(0, 255, 255, 0.2);
-            transition: all 0.3s;
-        }
-
-        .skill-item:hover {
-            transform: translateY(-5px);
-            border-color: var(--color-cyan);
-            box-shadow: 0 5px 20px rgba(0, 255, 255, 0.2);
-        }
-
-        .skill-name {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        .skill-bar {
-            height: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .skill-progress {
-            height: 100%;
-            background: linear-gradient(90deg, var(--color-cyan), var(--color-violet));
-            border-radius: 10px;
-            animation: fillBar 1.5s ease-out forwards;
-            transform-origin: left;
-        }
-
-        @keyframes fillBar {
-            from { transform: scaleX(0); }
-            to { transform: scaleX(1); }
-        }
-
-        /* Projects Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
-        }
-
-        .project-card {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 15px;
-            overflow: hidden;
-            border: 1px solid rgba(0, 255, 255, 0.2);
-            transition: all 0.3s;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 255, 255, 0.3);
-            border-color: var(--color-cyan);
-        }
-
-        .project-image {
-            width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, var(--color-cyan), var(--color-violet));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 60px;
-            color: white;
-        }
-
-        .project-info {
-            padding: 25px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .project-title {
-            font-family: 'Poppins', sans-serif;
-            font-size: 22px;
-            font-weight: 700;
-            margin-bottom: 15px;
-            color: var(--color-cyan);
-        }
-
-        .project-description {
-            color: var(--text-secondary);
-            margin-bottom: 20px;
-            line-height: 1.6;
-            text-align: center;
-        }
-
-        .project-tech {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-        }
-
-        .tech-tag {
-            padding: 5px 15px;
-            background: rgba(0, 255, 255, 0.1);
-            border: 1px solid var(--color-cyan);
-            border-radius: 20px;
-            font-size: 12px;
-            color: var(--color-cyan);
-        }
-
-        /* Timeline */
-        .timeline {
-            position: relative;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px 0;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2px;
-            height: 100%;
-            background: linear-gradient(180deg, var(--color-cyan), var(--color-violet));
-        }
-
-        .timeline-item {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 50px;
-            position: relative;
-        }
-
-        .timeline-item:nth-child(even) {
-            flex-direction: row-reverse;
-        }
-
-        .timeline-content {
-            width: 45%;
-            background: rgba(255, 255, 255, 0.03);
-            padding: 25px;
-            border-radius: 10px;
-            border: 1px solid rgba(0, 255, 255, 0.2);
-            transition: all 0.3s;
-        }
-
-        .timeline-content:hover {
-            border-color: var(--color-cyan);
-            box-shadow: 0 5px 20px rgba(0, 255, 255, 0.2);
-        }
-
-        .timeline-dot {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 20px;
-            height: 20px;
-            background: var(--color-cyan);
-            border-radius: 50%;
-            border: 4px solid var(--bg-primary);
-            box-shadow: 0 0 20px var(--color-cyan);
-            z-index: 1;
-        }
-
-        .timeline-title {
-            font-family: 'Poppins', sans-serif;
-            font-size: 22px;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: var(--color-cyan);
-        }
-
-        .timeline-date {
-            color: var(--color-violet);
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .social-link {
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px solid var(--color-cyan);
-            border-radius: 50%;
-            color: var(--color-cyan);
-            font-size: 24px;
-            text-decoration: none;
-            transition: all 0.4s;
-        }
-
-        .social-link:hover {
-            background: var(--color-cyan);
-            color: var(--bg-primary);
-            transform: translateY(-5px) rotate(360deg);
-        }
-
-        footer {
-            text-align: center;
-            padding: 40px;
-            background: rgba(0, 0, 0, 0.5);
-            border-top: 1px solid rgba(0, 255, 255, 0.2);
-            color: var(--text-secondary);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            nav { padding: 15px 5%; }
-            .nav-links { display: none; }
-            .hero h1 { font-size: 32px; }
-            .hero h2 { font-size: 18px; }
-            .section-title { font-size: 32px; }
-            .about-content { grid-template-columns: 1fr; }
-            .skills-grid { grid-template-columns: 1fr; }
-            .projects-grid { grid-template-columns: 1fr; }
-            .timeline::before { left: 20px; }
-            .timeline-item, .timeline-item:nth-child(even) { flex-direction: column !important; }
+        /* --- RESPONSIVE / HAMBURGER --- */
+        @media (max-width: 850px) {
+            .hamburger { display: flex; }
+            .nav-links {
+                position: fixed;
+                right: -100%;
+                top: 70px;
+                flex-direction: column;
+                background: rgba(10, 10, 15, 0.98);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                padding: 40px 0;
+                border-bottom: 1px solid var(--color-cyan);
+                height: calc(100vh - 70px);
+                justify-content: center;
+            }
+            .nav-links.active { right: 0; }
+            .timeline::before { left: 20px; transform: none; }
+            .timeline-dot { left: 20px; transform: translateX(-50%); }
+            .timeline-item, .timeline-item:nth-child(even) { flex-direction: row; justify-content: flex-start; }
             .timeline-content { width: calc(100% - 60px); margin-left: 60px; }
-            .timeline-dot { left: 20px; }
-            section { padding: 60px 5%; }
         }
     </style>
 </head>
 <body>
     <nav>
         <div class="logo">MM</div>
-        <ul class="nav-links">
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links" id="nav-links">
             <li><a href="#inicio">Inicio</a></li>
             <li><a href="#sobre-mi">Sobre Mí</a></li>
             <li><a href="#proyectos">Proyectos</a></li>
@@ -649,7 +392,7 @@
         <div class="social-links">
             <a href="https://github.com/mstivenmendez" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
             <a href="https://www.linkedin.com/in/maicoll-stiven-mendez-cuadros-914522397/" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
-            <a href="mailto:maicollstivendm3@hotmail.com" class="social-link" target="_blank"><i class="fas fa-envelope"></i></a>
+            <a href="mailto:maicollstivendm3@hotmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
             <a href="https://wa.me/573142639781" class="social-link" target="_blank"><i class="fab fa-whatsapp"></i></a>
         </div>
     </section>
@@ -659,6 +402,24 @@
     </footer>
 
     <script>
+        // Lógica del Menú Hamburguesa
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('toggle');
+        });
+
+        // Cerrar menú al hacer clic en un enlace
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('toggle');
+            });
+        });
+
+        // Lógica de Escritura Infinita
         const nameEl = document.getElementById('dyn-name');
         const roleEl = document.getElementById('dyn-role');
         const nameStr = "HOLA, SOY MAICOLL MÉNDEZ";
@@ -666,41 +427,26 @@
 
         let charIndex = 0;
         let isDeleting = false;
-        let step = 0; // 0: escribiendo nombre, 1: escribiendo cargo
+        let step = 0;
 
         function typeLoop() {
-            if (step === 0) {
-                if (!isDeleting && charIndex <= nameStr.length) {
-                    nameEl.textContent = nameStr.substring(0, charIndex);
-                    charIndex++;
-                    setTimeout(typeLoop, 100);
-                } else if (isDeleting && charIndex >= 0) {
-                    nameEl.textContent = nameStr.substring(0, charIndex);
-                    charIndex--;
-                    setTimeout(typeLoop, 50);
-                } else if (!isDeleting) {
-                    step = 1; charIndex = 0;
-                    setTimeout(typeLoop, 500);
-                } else {
-                    isDeleting = false; charIndex = 0;
-                    setTimeout(typeLoop, 500);
-                }
+            const currentStr = step === 0 ? nameStr : roleStr;
+            const currentEl = step === 0 ? nameEl : roleEl;
+
+            if (!isDeleting && charIndex <= currentStr.length) {
+                currentEl.textContent = currentStr.substring(0, charIndex);
+                charIndex++;
+                setTimeout(typeLoop, 100);
+            } else if (isDeleting && charIndex >= 0) {
+                currentEl.textContent = currentStr.substring(0, charIndex);
+                charIndex--;
+                setTimeout(typeLoop, 50);
+            } else if (!isDeleting) {
+                if (step === 0) { step = 1; charIndex = 0; setTimeout(typeLoop, 500); }
+                else { setTimeout(() => { isDeleting = true; typeLoop(); }, 2000); }
             } else {
-                if (!isDeleting && charIndex <= roleStr.length) {
-                    roleEl.textContent = roleStr.substring(0, charIndex);
-                    charIndex++;
-                    setTimeout(typeLoop, 100);
-                } else if (isDeleting && charIndex >= 0) {
-                    roleEl.textContent = roleStr.substring(0, charIndex);
-                    charIndex--;
-                    setTimeout(typeLoop, 50);
-                } else if (!isDeleting) {
-                    setTimeout(() => { isDeleting = true; typeLoop(); }, 2000);
-                } else {
-                    roleEl.textContent = "";
-                    step = 0; isDeleting = true; charIndex = nameStr.length;
-                    typeLoop();
-                }
+                if (step === 1) { roleEl.textContent = ""; step = 0; isDeleting = true; charIndex = nameStr.length; typeLoop(); }
+                else { isDeleting = false; charIndex = 0; setTimeout(typeLoop, 500); }
             }
         }
         window.onload = typeLoop;
