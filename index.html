@@ -3,453 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maicoll Méndez | Desarrollador Web</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <title>Maicoll Méndez | Desarrollador Junior Full Stack</title>
+    <meta name="description" content="Portafolio de Maicoll Méndez, desarrollador junior full stack y técnico en mantenimiento de computadores. Proyectos en HTML, CSS, JavaScript, Python y MySQL.">
+    <meta name="author" content="Maicoll Méndez">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Maicoll Méndez | Desarrollador Junior Full Stack">
+    <meta property="og:description" content="Portafolio con proyectos en HTML, CSS, JavaScript, Python y MySQL.">
+    <meta property="og:image" content="imagenes/foto-perfil.jpeg">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%233b82f6'/%3E%3Ctext x='50' y='66' font-size='48' font-family='Arial' font-weight='700' text-anchor='middle' fill='white'%3EMM%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --bg-primary: #0a0a0f;
-            --bg-secondary: #1a1a2e;
-            --color-cyan: #00ffff;
-            --color-violet: #8a2be2;
-            --color-pink: #ff006e;
-            --text-primary: #ffffff;
-            --text-secondary: #b0b0b0;
-        }
-
-        body {
-            font-family: 'Roboto', sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* --- NAVEGACIÓN Y MENÚ HAMBURGUESA --- */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 20px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            background: rgba(10, 10, 15, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0, 255, 255, 0.1);
-        }
-
-        .logo {
-            font-family: 'Poppins', sans-serif;
-            font-size: 28px;
-            font-weight: 900;
-            background: linear-gradient(45deg, var(--color-cyan), var(--color-violet));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: glow 2s ease-in-out infinite;
-        }
-
-        @keyframes glow {
-            0%, 100% { filter: drop-shadow(0 0 5px var(--color-cyan)); }
-            50% { filter: drop-shadow(0 0 20px var(--color-cyan)); }
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 40px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-primary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s;
-            position: relative;
-        }
-
-        .nav-links a:hover {
-            color: var(--color-cyan);
-        }
-
-        /* Icono Hamburguesa */
-        .hamburger {
-            display: none;
-            cursor: pointer;
-            flex-direction: column;
-            gap: 6px;
-            z-index: 1100;
-        }
-
-        .hamburger span {
-            width: 30px;
-            height: 3px;
-            background: var(--color-cyan);
-            transition: 0.3s;
-            border-radius: 2px;
-        }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            padding: 120px 5% 50px;
-            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 20% 50%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 80%, rgba(138, 43, 226, 0.1) 0%, transparent 50%);
-            animation: pulse 8s ease-in-out infinite;
-        }
-
-        @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
-
-        .hero-content {
-            text-align: center;
-            z-index: 2;
-            max-width: 900px;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-
-        .avatar {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            margin: 0 auto 30px;
-            background: linear-gradient(45deg, var(--color-cyan), var(--color-violet));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 50px rgba(0, 255, 255, 0.5);
-            animation: float 3s ease-in-out infinite;
-            overflow: hidden;
-            padding: 4px;
-        }
-
-        .avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-        }
-
-        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
-
-        .typing-container {
-            min-height: 120px;
-            margin-bottom: 20px;
-        }
-
-        .hero h1 {
-            font-family: 'Poppins', sans-serif;
-            font-size: clamp(32px, 8vw, 56px);
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-        }
-
-        .hero h2 {
-            font-size: clamp(18px, 4vw, 24px);
-            color: var(--color-cyan);
-            margin-bottom: 20px;
-            font-weight: 300;
-            min-height: 36px;
-        }
-
-        .hero p {
-            font-size: clamp(14px, 2vw, 18px);
-            color: var(--text-secondary);
-            margin-bottom: 40px;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 15px 40px;
-            background: linear-gradient(45deg, var(--color-cyan), var(--color-violet));
-            color: var(--text-primary);
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 18px;
-            transition: all 0.3s;
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-button:hover { transform: translateY(-5px); box-shadow: 0 10px 40px rgba(0, 255, 255, 0.6); }
-
-        /* --- SECCIONES --- */
-        section { padding: 80px 5%; max-width: 1400px; margin: 0 auto; }
-        .section-title { font-family: 'Poppins', sans-serif; font-size: clamp(28px, 5vw, 48px); font-weight: 700; text-align: center; margin-bottom: 60px; text-transform: uppercase; letter-spacing: 3px; }
-        .section-title span { background: linear-gradient(45deg, var(--color-cyan), var(--color-violet)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-
-        .about-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 60px; align-items: center; }
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 25px; }
-        .skill-item { background: rgba(255, 255, 255, 0.03); padding: 20px; border-radius: 10px; border: 1px solid rgba(0, 255, 255, 0.2); transition: 0.3s; }
-        .skill-name { display: flex; justify-content: space-between; margin-bottom: 10px; font-weight: 600; }
-        .skill-bar { height: 8px; background: rgba(255, 255, 255, 0.1); border-radius: 10px; overflow: hidden; }
-        .skill-progress { height: 100%; background: linear-gradient(90deg, var(--color-cyan), var(--color-violet)); border-radius: 10px; transform-origin: left; }
-
-        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
-        .project-card { background: rgba(255, 255, 255, 0.03); border-radius: 15px; overflow: hidden; border: 1px solid rgba(0, 255, 255, 0.2); transition: 0.3s; }
-        .project-image { height: 200px; background: linear-gradient(135deg, var(--color-cyan), var(--color-violet)); display: flex; align-items: center; justify-content: center; font-size: 60px; }
-        .project-info { padding: 25px; display: flex; flex-direction: column; align-items: center; }
-
-        .timeline { position: relative; max-width: 900px; margin: 0 auto; padding: 20px 0; }
-        .timeline::before { content: ''; position: absolute; left: 50%; transform: translateX(-50%); width: 2px; height: 100%; background: linear-gradient(180deg, var(--color-cyan), var(--color-violet)); }
-        .timeline-item { display: flex; justify-content: space-between; margin-bottom: 50px; position: relative; width: 100%; }
-        .timeline-item:nth-child(even) { flex-direction: row-reverse; }
-        .timeline-content { width: 45%; background: rgba(255, 255, 255, 0.03); padding: 25px; border-radius: 10px; border: 1px solid rgba(0, 255, 255, 0.2); transition: 0.3s; }
-        .timeline-dot { position: absolute; left: 50%; transform: translateX(-50%); width: 20px; height: 20px; background: var(--color-cyan); border-radius: 50%; border: 4px solid var(--bg-primary); z-index: 1; }
-
-        .social-links { display: flex; justify-content: center; gap: 30px; margin-top: 40px; flex-wrap: wrap; }
-        .social-link { width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border: 2px solid var(--color-cyan); border-radius: 50%; color: var(--color-cyan); font-size: 24px; transition: 0.4s; }
-        .social-link:hover { background: var(--color-cyan); color: var(--bg-primary); transform: translateY(-5px) rotate(360deg); }
-
-        footer { text-align: center; padding: 40px; background: rgba(0, 0, 0, 0.5); border-top: 1px solid rgba(0, 255, 255, 0.2); color: var(--text-secondary); }
-
-        /* --- RESPONSIVE / HAMBURGER --- */
-        @media (max-width: 850px) {
-            .hamburger { display: flex; }
-            .nav-links {
-                position: fixed;
-                right: -100%;
-                top: 70px;
-                flex-direction: column;
-                background: rgba(10, 10, 15, 0.98);
-                width: 100%;
-                text-align: center;
-                transition: 0.3s;
-                padding: 40px 0;
-                border-bottom: 1px solid var(--color-cyan);
-                height: calc(100vh - 70px);
-                justify-content: center;
-            }
-            .nav-links.active { right: 0; }
-            .timeline::before { left: 20px; transform: none; }
-            .timeline-dot { left: 20px; transform: translateX(-50%); }
-            .timeline-item, .timeline-item:nth-child(even) { flex-direction: row; justify-content: flex-start; }
-            .timeline-content { width: calc(100% - 60px); margin-left: 60px; }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <nav>
-        <div class="logo">MM</div>
-        <div class="hamburger" id="hamburger">
+        <a href="#inicio" class="logo" aria-label="Ir al inicio">MM</a>
+        <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links">
             <span></span>
             <span></span>
             <span></span>
-        </div>
+        </button>
         <ul class="nav-links" id="nav-links">
             <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#sobre-mi">Sobre Mí</a></li>
+            <li><a href="#sobre-mi">Sobre mí</a></li>
             <li><a href="#proyectos">Proyectos</a></li>
             <li><a href="#experiencia">Experiencia</a></li>
             <li><a href="#contacto">Contacto</a></li>
         </ul>
     </nav>
 
-    <section id="inicio" class="hero">
-        <div class="hero-content">
-            <div class="avatar">
-                <img src="./imagenes/WhatsApp Image 2026-01-27 at 5.37.13 PM.jpeg" alt="Maicoll Méndez">
+    <main>
+        <section id="inicio" class="hero">
+            <div class="hero-content">
+                <div class="avatar">
+                    <img src="./imagenes/foto-perfil.jpeg" alt="Foto de Maicoll Méndez">
+                </div>
+                <div class="typing-container">
+                    <h1 id="dyn-name"></h1>
+                    <h2 id="dyn-role"></h2>
+                </div>
+                <p>Técnico en mantenimiento de computadores y técnico laboral en desarrollo de software.</p>
+                <div class="hero-actions">
+                    <a href="#proyectos" class="btn btn-primary">Ver mis proyectos</a>
+                    <a href="#contacto" class="btn btn-secondary">Contáctame</a>
+                </div>
             </div>
-            <div class="typing-container">
-                <h1 id="dyn-name"></h1>
-                <h2 id="dyn-role"></h2>
-            </div>
-            <p> Técnico en mantenimiento de computadores y técnico laboral en desarrollo de software</p>
-            <a href="#proyectos" class="cta-button">Ver mis proyectos</a>
-        </div>
-    </section>
+        </section>
 
-    <section id="sobre-mi">
-        <h2 class="section-title"><span>Sobre</span> Mí</h2>
-        <div class="about-content">
-            <div class="about-text">
-                <p>Soy técnico en mantenimiento de computadores y técnico laboral en desarrollo de software egresado de Campuslands, donde he fortalecido mis conocimientos en programación, tecnología y trabajo colaborativo.</p>
-                <p>Me gusta la programación porque me permite crear soluciones que facilitan la vida de las personas y convertir ideas en proyectos reales. Lo que más disfruto de programar es el proceso de resolver problemas, aprender nuevas tecnologías y ver cómo el trabajo se transforma en algo funcional y útil.</p>
-                <p>Considero que la programación es una forma de pensar, innovar y mantenerme en constante aprendizaje.</p>
-            </div>
-            <div class="skills-grid">
-                <div class="skill-item">
-                    <div class="skill-name"><span>HTML</span><span>100%</span></div>
-                    <div class="skill-bar"><div class="skill-progress" style="width: 100%"></div></div>
+        <section id="sobre-mi">
+            <h2 class="section-title">Sobre mí</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Soy técnico en mantenimiento de computadores y técnico laboral en desarrollo de software egresado de Campuslands, donde he fortalecido mis conocimientos en programación, tecnología y trabajo colaborativo.</p>
+                    <p>Me gusta la programación porque me permite crear soluciones que facilitan la vida de las personas y convertir ideas en proyectos reales. Lo que más disfruto es el proceso de resolver problemas, aprender nuevas tecnologías y ver cómo el trabajo se transforma en algo funcional y útil.</p>
+                    <p>Considero que la programación es una forma de pensar, innovar y mantenerme en constante aprendizaje.</p>
                 </div>
-                <div class="skill-item">
-                    <div class="skill-name"><span>CSS</span><span>70%</span></div>
-                    <div class="skill-bar"><div class="skill-progress" style="width: 70%"></div></div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-name"><span>JavaScript</span><span>50%</span></div>
-                    <div class="skill-bar"><div class="skill-progress" style="width: 50%"></div></div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-name"><span>Git/GitHub</span><span>80%</span></div>
-                    <div class="skill-bar"><div class="skill-progress" style="width: 80%"></div></div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-name"><span>Python</span><span>50%</span></div>
-                    <div class="skill-bar"><div class="skill-progress" style="width: 50%"></div></div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-name"><span>Mysql</span><span>60%</span></div>
-                    <div class="skill-bar"><div class="skill-progress" style="width: 60%"></div></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="proyectos">
-        <h2 class="section-title">Mis <span>Proyectos</span></h2>
-        <div class="projects-grid">
-            <div class="project-card">
-                <div class="project-image"><i class="fas fa-laptop-code"></i></div>
-                <div class="project-info">
-                    <h3 class="project-title">E-Commerce </h3>
-                    <p class="project-description">Desarrollo de un e-commerce para una tienda de ropa y calzado, implementado con HTML, CSS y JavaScript. El proyecto incluye una interfaz moderna e intuitiva que permite visualizar productos, gestionar el carrito de compras y simular procesos de pago. Además, se integró una API para la obtención dinámica de datos, mejorando la experiencia del usuario y la eficiencia del sistema. Este proyecto fortaleció mis habilidades en desarrollo web frontend, consumo de APIs y diseño de interfaces funcionales y atractivas.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">HTML</span><span class="tech-tag">CSS</span><span class="tech-tag">JavaScript</span>
+                <div class="skills-groups">
+                    <div class="skill-group">
+                        <h3>Frontend</h3>
+                        <div class="skill-tags">
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                    </div>
+                    <div class="skill-group">
+                        <h3>Backend</h3>
+                        <div class="skill-tags">
+                            <span class="tech-tag">Python</span>
+                        </div>
+                    </div>
+                    <div class="skill-group">
+                        <h3>Bases de datos</h3>
+                        <div class="skill-tags">
+                            <span class="tech-tag">MySQL</span>
+                        </div>
+                    </div>
+                    <div class="skill-group">
+                        <h3>Herramientas</h3>
+                        <div class="skill-tags">
+                            <span class="tech-tag">Git</span>
+                            <span class="tech-tag">GitHub</span>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="project-card">
-                <div class="project-image"><i class="fas fa-mobile-alt"></i></div>
-                <div class="project-info">
-                    <h3 class="project-title"> Simulacion de una loteria </h3>
-                    <p class="project-description"> Desarrollo de una simulación de lotería en Python utilizando estructuras de datos como listas y diccionarios para gestionar los boletos, números ganadores y resultados. El proyecto permite generar números aleatorios, validar coincidencias y mostrar estadísticas de ganadores, aplicando lógica de programación y control de flujo. Este ejercicio fortaleció mis habilidades en el manejo de datos, uso de estructuras dinámicas y desarrollo de programas interactivos en Python.</p>
-                    <div class="project-tech"><span class="tech-tag">Python</span></div>
-                </div>
-            </div>
-            <div class="project-card">
-                <div class="project-image"><i class="fa fa-database"></i></div>
-                <div class="project-info">
-                    <h3 class="project-title">Base de datos</h3>
-                    <p class="project-description"> enfocada en la gestión eficiente de productos, clientes, ventas y proveedores. El proyecto incluye la creación de tablas relacionales, implementación de llaves foráneas y consultas SQL optimizadas utilizando MySQL. Este trabajo permitió mejorar la organización de la información y facilitar el acceso a los datos para generar reportes y análisis de ventas.</p>
-                    <div class="project-tech"><span class="tech-tag">Mysql</span></div>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="experiencia">
-        <h2 class="section-title">Mi <span>Trayectoria</span></h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <h3 class="timeline-title">Campuslands</h3>
-                    <p class="timeline-date">2024 - Presente</p>
-                    <p>Formación intensiva en desarrollo web full-stack, aprendiendo las tecnologías más demandadas del mercado y trabajando en proyectos reales.</p>
-                </div>
+        <section id="proyectos">
+            <h2 class="section-title">Proyectos</h2>
+            <div class="projects-grid">
+                <article class="project-card">
+                    <div class="project-image"><i class="fas fa-laptop-code" aria-hidden="true"></i></div>
+                    <div class="project-info">
+                        <h3 class="project-title">E-Commerce de ropa y calzado</h3>
+                        <p class="project-description">Tienda en línea con interfaz moderna e intuitiva para visualizar productos, gestionar el carrito de compras y simular el proceso de pago. Integra una API para obtener los datos de forma dinámica.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">API</span>
+                        </div>
+                        <a href="https://github.com/mstivenmendez" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i> Ver en GitHub</a>
+                    </div>
+                </article>
+                <article class="project-card">
+                    <div class="project-image"><i class="fas fa-ticket-alt" aria-hidden="true"></i></div>
+                    <div class="project-info">
+                        <h3 class="project-title">Simulación de una lotería</h3>
+                        <p class="project-description">Programa en Python que gestiona boletos, números ganadores y resultados con listas y diccionarios. Genera números aleatorios, valida coincidencias y muestra estadísticas de ganadores.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                        </div>
+                        <a href="https://github.com/mstivenmendez" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i> Ver en GitHub</a>
+                    </div>
+                </article>
+                <article class="project-card">
+                    <div class="project-image"><i class="fas fa-database" aria-hidden="true"></i></div>
+                    <div class="project-info">
+                        <h3 class="project-title">Base de datos de ventas</h3>
+                        <p class="project-description">Base de datos relacional para gestionar productos, clientes, ventas y proveedores, con llaves foráneas y consultas SQL optimizadas para generar reportes y análisis de ventas.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">MySQL</span>
+                        </div>
+                        <a href="https://github.com/mstivenmendez" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i> Ver en GitHub</a>
+                    </div>
+                </article>
             </div>
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <h3 class="timeline-title">Tecnico en mantenimeinto de computadores</h3>
-                    <p class="timeline-date"> 2025</p>
-                    <p>Mantenimiento y optimización de equipos de cómputo para usuarios y pequeñas empresas, garantizando su correcto funcionamiento y rendimiento. Enfocado en mejorar continuamente mis habilidades técnicas y en ofrecer un servicio de atención al cliente eficiente y confiable.</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <h3 class="timeline-title"> Proyectos personales </h3>
-                    <p class="timeline-date"> 2025 </p>
-                    <p>Desarrollo de proyectos personales enfocados en la creación de sitios web interactivos y aplicaciones funcionales utilizando tecnologías como HTML, CSS y JavaScript en el frontend, y Python junto con MySQL en el backend. Además, gestiono el control de versiones y la colaboración de mis proyectos a través de Git y GitHub, fortaleciendo mis habilidades técnicas, de organización y trabajo en equipo.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="contacto">
-        <h2 class="section-title"><span>Contacto</span></h2>
-        <div class="social-links">
-            <a href="https://github.com/mstivenmendez" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/maicoll-stiven-mendez-cuadros-914522397/" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
-            <a href="mailto:maicollstivendm3@hotmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
-            <a href="https://wa.me/573142639781" class="social-link" target="_blank"><i class="fab fa-whatsapp"></i></a>
-        </div>
-    </section>
+        <section id="experiencia">
+            <h2 class="section-title">Trayectoria</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Alin Steel Building</h3>
+                        <p class="timeline-date">Prácticas profesionales</p>
+                        <p>Prácticas como desarrollador de software y automatizaciones, enfocado en soluciones empresariales que optimizan procesos internos. Adquirí conocimientos en la plataforma de Microsoft y los apliqué en un entorno de trabajo real.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Campuslands</h3>
+                        <p class="timeline-date">2024 - Presente</p>
+                        <p>Formación intensiva en desarrollo web full stack, aprendiendo las tecnologías más demandadas del mercado y trabajando en proyectos reales.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Técnico en mantenimiento de computadores</h3>
+                        <p class="timeline-date">2025</p>
+                        <p>Mantenimiento y optimización de equipos de cómputo para usuarios y pequeñas empresas, garantizando su correcto funcionamiento y rendimiento, con un servicio de atención al cliente eficiente y confiable.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Proyectos personales</h3>
+                        <p class="timeline-date">2025</p>
+                        <p>Desarrollo de sitios web interactivos y aplicaciones funcionales con HTML, CSS y JavaScript en el frontend, y Python junto con MySQL en el backend. Gestiono el control de versiones y la colaboración con Git y GitHub.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto">
+            <h2 class="section-title">Contacto</h2>
+            <p class="contact-text">Estoy disponible para nuevas oportunidades y proyectos. Escríbeme y con gusto conversamos.</p>
+            <a href="mailto:maicollstivendm3@hotmail.com" class="contact-email">maicollstivendm3@hotmail.com</a>
+            <div class="social-links">
+                <a href="https://github.com/mstivenmendez" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+                <a href="https://www.linkedin.com/in/maicoll-stiven-mendez-cuadros-914522397/" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+                <a href="mailto:maicollstivendm3@hotmail.com" class="social-link" aria-label="Correo electrónico"><i class="fas fa-envelope" aria-hidden="true"></i></a>
+                <a href="https://wa.me/573142639781" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+            </div>
+        </section>
+    </main>
 
     <footer>
-        <p>&copy; 2026 Maicoll Méndez | Desarrollador Junior </p>
+        <p>&copy; 2026 Maicoll Méndez | Desarrollador Junior</p>
     </footer>
 
-    <script>
-        // Lógica del Menú Hamburguesa
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('nav-links');
-
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            hamburger.classList.toggle('toggle');
-        });
-
-        // Cerrar menú al hacer clic en un enlace
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                hamburger.classList.remove('toggle');
-            });
-        });
-
-        // Lógica de Escritura Infinita
-        const nameEl = document.getElementById('dyn-name');
-        const roleEl = document.getElementById('dyn-role');
-        const nameStr = "HOLA, SOY MAICOLL MÉNDEZ";
-        const roleStr = "Desarrollador Junior Full Stack";
-
-        let charIndex = 0;
-        let isDeleting = false;
-        let step = 0;
-
-        function typeLoop() {
-            const currentStr = step === 0 ? nameStr : roleStr;
-            const currentEl = step === 0 ? nameEl : roleEl;
-
-            if (!isDeleting && charIndex <= currentStr.length) {
-                currentEl.textContent = currentStr.substring(0, charIndex);
-                charIndex++;
-                setTimeout(typeLoop, 100);
-            } else if (isDeleting && charIndex >= 0) {
-                currentEl.textContent = currentStr.substring(0, charIndex);
-                charIndex--;
-                setTimeout(typeLoop, 50);
-            } else if (!isDeleting) {
-                if (step === 0) { step = 1; charIndex = 0; setTimeout(typeLoop, 500); }
-                else { setTimeout(() => { isDeleting = true; typeLoop(); }, 2000); }
-            } else {
-                if (step === 1) { roleEl.textContent = ""; step = 0; isDeleting = true; charIndex = nameStr.length; typeLoop(); }
-                else { isDeleting = false; charIndex = 0; setTimeout(typeLoop, 500); }
-            }
-        }
-        window.onload = typeLoop;
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
