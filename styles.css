@@ -205,6 +205,10 @@ section.hero {
     border: 1px solid var(--border);
 }
 
+.btn i {
+    margin-right: 8px;
+}
+
 .btn-secondary:hover {
     border-color: var(--accent);
     transform: translateY(-2px);
@@ -448,6 +452,8 @@ section {
 }
 
 .contact-email:hover { color: var(--text-primary); }
+
+.contact-cv { margin-top: 28px; }
 
 .social-links {
     display: flex;
